@@ -28,11 +28,17 @@ const missingPersonSchema = new mongoose.Schema({
   ageAtDisappearance: {
     type: Number,
   },
+  creationDate: {
+    type: Date,
+    default: Date.now,
+  },
   messages: [
     {
       userId: String,
       title: String,
       text: String,
+      read: Boolean,
+      default: false,
     },
   ],
 });

@@ -40,7 +40,7 @@ exports.updateVisibility = async (req, res) => {
     );
 
     if (updatedVisibity.modifiedCount > 0) {
-      res.status(200).send({ msg: "Successfully updated user" });
+      res.status(200).send({ msg: "Successfully updated missing person" });
     } else {
       throw new Error("Did not update");
     }
@@ -59,23 +59,31 @@ exports.updateMissingPerson = async (req, res) => {
     const updatedMP = await MP.findOneAndUpdate(filter, update, options);
 
     if (updatedMP) {
-      res.status(200).send({ msg: "Successfully updated user" });
+      res.status(200).send({ msg: "Successfully updated missing person" });
     } else {
       throw new Error("Did not update");
     }
-
-    // const updatedMP = await MP.updateOne(
-    //   { _id: req.body._id },
-    //   { data: req.body.data }
-    // );
-    // if (updatedMP.modifiedCount > 0) {
-    //   res.status(200).send({ msg: "Successfully updated missing person" });
-    // } else {
-    //   throw new Error("Did not update");
-    // }
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
+  }
+};
+
+exports.updateMessages = async (req, res) => {
+  try {
+    const updatedVisibity = await MP.updateOne(
+      { [req.body.filterKey]: req.body.filterVal },
+      { [req.body.updateKey]: req.body.updateVal }
+    );
+
+    if (updatedVisibity.modifiedCount > 0) {
+      res.status(200).send({ msg: "Successfully updated messages" });
+    } else {
+      throw new Error("Did not update");
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ err: error.message });
   }
 };
 
@@ -88,5 +96,21 @@ exports.searchMPByName = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
+  }
+};
+
+// deleteMissingPersons is a deleteMany() that is used to clean up if a user decides to delete their account. this controller shouldnt really be used for any other purpose given how destructive it is!!
+exports.deleteMissingPersons = async (req, res) => {
+  try {
+    const result = await MP.deleteMany({ userId: req.params.userid });
+
+    if (result && result.deletedCount > 0) {
+      res.status(200).send({ msg: `missing persons have been deleted` });
+    } else {
+      throw new Error("missing persons were not deleted");
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ err: error.message });
   }
 };
