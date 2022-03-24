@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const {
   addMissingPerson,
-  listMissingPersons,
+  listAllMissingPersons,
   updateVisibility,
   searchMPByName,
-  listMyMissingPersons,
+  listFilteredMissingPersons,
   updateMissingPerson,
   deleteMissingPersons,
   updateMessages,
@@ -12,11 +12,11 @@ const {
 const mpRouter = Router();
 
 mpRouter.post("/missing", addMissingPerson);
-mpRouter.get("/missing/list", listMissingPersons);
+mpRouter.get("/missing/list", listAllMissingPersons);
 mpRouter.patch("/missing", updateVisibility);
 mpRouter.patch("/missing/messages", updateMessages);
 mpRouter.post("/missing/search", searchMPByName);
-mpRouter.post("/mymissing", listMyMissingPersons);
+mpRouter.post("/missing/filtered", listFilteredMissingPersons);
 mpRouter.put("/missing", updateMissingPerson);
 mpRouter.delete("/missing/:userid", deleteMissingPersons);
 

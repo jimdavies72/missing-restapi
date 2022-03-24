@@ -11,7 +11,7 @@ const missingPersonSchema = new mongoose.Schema({
   },
   publicVisible: {
     type: Boolean,
-    default: false,
+    default: true,
     required: true,
   },
   picURL: {

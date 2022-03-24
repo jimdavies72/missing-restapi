@@ -10,7 +10,7 @@ exports.addMissingPerson = async (req, res) => {
   }
 };
 
-exports.listMissingPersons = async (req, res) => {
+exports.listAllMissingPersons = async (req, res) => {
   try {
     const mps = await MP.find({});
     res.status(200).send({ mps });
@@ -20,12 +20,12 @@ exports.listMissingPersons = async (req, res) => {
   }
 };
 
-exports.listMyMissingPersons = async (req, res) => {
+exports.listFilteredMissingPersons = async (req, res) => {
   try {
     const mps = await MP.find({
       [req.body.filterKey]: req.body.filterVal,
     });
-    res.status(200).send({ mymps: mps });
+    res.status(200).send({ mps });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
@@ -92,7 +92,7 @@ exports.searchMPByName = async (req, res) => {
     const mps = await MP.find({
       [req.body.filterKey]: { $regex: req.body.filterVal },
     });
-    res.status(200).send({ missingPersons: mps });
+    res.status(200).send({ mps });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
