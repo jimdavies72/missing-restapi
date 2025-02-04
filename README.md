@@ -1,26 +1,31 @@
-# missing-restapi
+# Repo: missing-restapi
+![Static Badge](https://img.shields.io/badge/Dev_status-Complete-blue)
 
-**The back-end repo for the website:**
+## **Course Final Team Project: Design and build a full stack application**
 
-## ICQ - Missing Persons
+### Description
 
-https://icq-missing.netlify.app/
+### ICQ - Missing Persons
 
+This repo represents the back-end REST API code that formed part of the CodeNation Bootcamp Final Team Project. The front-end can be found in the repo: [missing-app](https://github.com/jimdavies72/missing-app)
 
-### The project was written in Node.JS
+View the end product here: [ICQ - Missing Persons](https://icq-missing.netlify.app/)
 
-### This project contains the following packages:
+### Tech Stack (Back End only):
 
-**bcryptjs
-cors
-dotenv
-email-validator
-express
-jsonwebtoken
-mongoose**
- 
-**devDependencies:
-nodemon**
- 
+- Node.JS web framework
+- JavaScript
+- Express.JS
+- Atlas MongoDB NoSQL datastore
+- Vercel Hosting (Please note that this was originally hosted on Heroku but has since been migrated)
 
-After cloning, run npm install. You will also need to clone the missing-app repo and have an active mongodb account to spin up.
+### This project contains the following NPM packages:
+
+- bcryptjs
+- cors
+- dotenv
+- email-validator
+- express
+- jsonwebtoken
+- mongoose
+- nodemon (dev dependency)
