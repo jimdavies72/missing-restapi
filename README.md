@@ -16,6 +16,7 @@ View the end product here: [ICQ - Missing Persons](https://icq-missing.netlify.a
 - Node.JS web framework
 - JavaScript
 - Express.JS
+- JWT
 - Atlas MongoDB NoSQL datastore
 - Vercel Hosting (Please note that this was originally hosted on Heroku but has since been migrated)
 
